@@ -3,14 +3,18 @@ package com.py.news1;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,21 +35,12 @@ public class MainActivity extends AppCompatActivity {
     private List<newsq> newsLsit;
     public  static TextView data;
     private newsAdapter newsadapter;
-    Button button;
+    public Intent intent1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-    button = (Button) findViewById(R.id.tweets);
-
-    button.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(getApplicationContext(),tweetsActivity.class);
-            startActivity(intent);
-        }
-    });
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),1));
@@ -60,6 +55,24 @@ public class MainActivity extends AppCompatActivity {
 
         process.execute();
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menufile,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id==R.id.tweets)
+        {
+            Toast.makeText(this,"tweets",Toast.LENGTH_SHORT).show();
+            intent1 = new Intent(getApplicationContext(),tweetsActivity.class);
+            startActivity(intent1);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public class fetchData extends AsyncTask<Void,Void,Void> {
@@ -118,8 +131,7 @@ public class MainActivity extends AppCompatActivity {
         }
         @Override
         protected void onPreExecute() {
-            dialog.setMessage("Getting Data, please wait.");
-            dialog.show();
+
         }
         @Override
         protected void onPostExecute(Void aVoid) {
