@@ -36,11 +36,24 @@ public class MainActivity extends AppCompatActivity {
     public  static TextView data;
     private newsAdapter newsadapter;
     public Intent intent1;
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        button = (Button)findViewById(R.id.refresh);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newsLsit.clear();
+                Toast.makeText(MainActivity.this, "Data Refreshed!", Toast.LENGTH_SHORT).show();
+
+                fetchData process = new fetchData();
+
+                process.execute();
+            }
+        });
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),1));

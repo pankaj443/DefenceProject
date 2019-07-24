@@ -42,7 +42,7 @@ public class tweetsActivity extends AppCompatActivity {
                 Log.i("msgnm", String.valueOf(position));
 
                 if (position == 0){
-                  
+
                     get("officialdgispr");
                 }else if (position == 1){
 

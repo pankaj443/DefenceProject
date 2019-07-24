@@ -8,9 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 public class newsAdapter extends RecyclerView.Adapter<newsAdapter.Userviewholder> {
 
@@ -41,9 +45,20 @@ public class newsAdapter extends RecyclerView.Adapter<newsAdapter.Userviewholder
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(newViewHolder.itemView.getContext(),detailed.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("link",u.link);
                 newViewHolder.itemView.getContext().startActivity(intent);
+            }
+        });
+        newViewHolder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "TOP NEWS");
+                intent.putExtra(Intent.EXTRA_TEXT, u.link);
+                newViewHolder.button.getContext().startActivity(intent);
             }
         });
     }
@@ -59,6 +74,7 @@ public class newsAdapter extends RecyclerView.Adapter<newsAdapter.Userviewholder
 
 
         TextView news,date,brief;
+        ImageView button;
 
 
         public Userviewholder(@NonNull View itemView) {
@@ -67,16 +83,19 @@ public class newsAdapter extends RecyclerView.Adapter<newsAdapter.Userviewholder
             date = itemView.findViewById(R.id.date);
             brief = itemView.findViewById(R.id.brief);
             news = itemView.findViewById(R.id.head);
+            button = itemView.findViewById(R.id.share);
             itemView.setOnClickListener(this);
+
         }
+
 
 
         @Override
         public void onClick(View v) {
 
-
-
-
         }
     }
+
+
+
 }
