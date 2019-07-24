@@ -1,8 +1,10 @@
 package com.py.news1;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -37,12 +39,42 @@ public class tweetsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                Log.i("msgnm", String.valueOf(position));
 
-                Intent intent = new Intent(getApplicationContext(),t.class);
+                if (position == 0){
+                  
+                    get("officialdgispr");
+                }else if (position == 1){
 
-                startActivity(intent);
-                // Log.i("MSGNM", url);
+                    get("walterladwig");
+                }else if (position == 2){
+
+                    get("TakshashilaInst");
+                }else if (position == 3){
+
+                    get("pcipakchina");
+                }else if (position == 4){
+
+                    get("husainhaqqani");
+                }else if (position == 5){
+
+                    get("arunp2810");
+                }else if (position == 6){
+
+                    get("Razarumi");
+                }else if (position == 7){
+
+                    get("BDUTT");
+                }
+
+
             }
         });
+    }
+
+    public  void get(String url){
+        Uri uri = Uri.parse("https://twitter.com/"+url); // missing 'http://' will cause crashed
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 }
