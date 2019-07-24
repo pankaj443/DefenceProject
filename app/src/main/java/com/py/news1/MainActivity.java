@@ -1,6 +1,7 @@
 package com.py.news1;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,12 +31,21 @@ public class MainActivity extends AppCompatActivity {
     private List<newsq> newsLsit;
     public  static TextView data;
     private newsAdapter newsadapter;
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+    button = (Button) findViewById(R.id.tweets);
 
+    button.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(getApplicationContext(),tweetsActivity.class);
+            startActivity(intent);
+        }
+    });
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),1));
