@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -31,10 +32,10 @@ android:background="@drawable/main"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Buy whiskas"
-                    android:textAllCaps="true"
                     android:textColor="#020202"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:fontFamily="@font/arbutus_slab" />
 
 
                 <LinearLayout
@@ -49,7 +50,7 @@ android:background="@drawable/main"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:text="Status:Pending"
-                        android:textColor="#FF0000"
+                        android:textColor="#F0DF45"
                         android:textSize="15sp" />
 
                     <ImageView
@@ -83,8 +84,7 @@ android:background="@drawable/main"
             android:layout_marginTop="10dp"
             android:text="Status:Pending"
             android:textColor="#030303"
-            android:textSize="16sp"
-            android:textStyle="italic"/>
+            android:textSize="16sp"/>
 
     </LinearLayout>
 

@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button = (Button)findViewById(R.id.refresh);
+        /*button = (Button)findViewById(R.id.refresh);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
                 process.execute();
             }
-        });
+        });*/
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),1));
@@ -84,6 +84,15 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,"tweets",Toast.LENGTH_SHORT).show();
             intent1 = new Intent(getApplicationContext(),tweetsActivity.class);
             startActivity(intent1);
+        }
+        if(id==R.id.refresh)
+        {
+            newsLsit.clear();
+            Toast.makeText(MainActivity.this, "Data Refreshed!", Toast.LENGTH_SHORT).show();
+
+            fetchData process = new fetchData();
+
+            process.execute();
         }
         return super.onOptionsItemSelected(item);
     }

@@ -7,4 +7,9 @@
         android:icon="@drawable/twitter"
         android:title="Item"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/refresh"
+        android:icon="@drawable/refresh"
+        android:title="Item"
+        app:showAsAction="ifRoom" />
 </menu>
