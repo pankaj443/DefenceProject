@@ -23,8 +23,7 @@
             android:name=".tweetsActivity"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".detailed"
-            android:parentActivityName=".MainActivity" />
+            android:name=".detailed" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".MainActivity">
         </activity>
 

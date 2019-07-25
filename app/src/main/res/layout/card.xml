@@ -35,7 +35,7 @@ android:background="@drawable/main"
                     android:textColor="#020202"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    app:fontFamily="@font/arbutus_slab" />
+                    app:fontFamily="@font/crimsonroman" />
 
 
                 <LinearLayout
