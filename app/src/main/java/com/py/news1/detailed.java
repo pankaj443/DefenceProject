@@ -16,5 +16,7 @@ public class detailed extends AppCompatActivity {
         String link = intent.getStringExtra("link");
         WebView mywebview = (WebView) findViewById(R.id.web);
         mywebview.loadUrl(link);
+
+
     }
 }

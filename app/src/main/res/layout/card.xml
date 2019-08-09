@@ -48,9 +48,8 @@ android:background="@drawable/main"
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:text="Status:Pending"
-                        android:textColor="#F0DF45"
+                        android:textColor=" #f13b0e "
                         android:textSize="15sp" />
 
                     <ImageView

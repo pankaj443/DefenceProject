@@ -21,9 +21,12 @@
         </activity>
         <activity
             android:name=".tweetsActivity"
+            android:label="Tweets"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".detailed" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:name=".detailed"
+            android:label="News"
+            />
         <activity android:name=".MainActivity">
         </activity>
 

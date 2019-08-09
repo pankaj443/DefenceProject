@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         if(id==R.id.tweets)
         {
-            Toast.makeText(this,"tweets",Toast.LENGTH_SHORT).show();
+
             intent1 = new Intent(getApplicationContext(),tweetsActivity.class);
             startActivity(intent1);
         }

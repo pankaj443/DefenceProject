@@ -1,14 +1,20 @@
 package com.py.news1;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -24,6 +30,10 @@ public class tweetsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tweets);
 
         listView = (ListView)findViewById(R.id.list);
+        MyAdapter adapter = new MyAdapter(this, tweet);
+        listView.setAdapter(adapter);
+
+
         tweet.add("DG ISPR");
         tweet.add("Walter Ladwing III");
         tweet.add("Takshashila Institution");
@@ -32,8 +42,7 @@ public class tweetsActivity extends AppCompatActivity {
         tweet.add("Admiral Arun Prakash");
         tweet.add("Raza Ahmed Rumi");
         tweet.add("Barkha Dutt");
-        arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item,tweet);
-        listView.setAdapter(arrayAdapter);
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -77,4 +86,40 @@ public class tweetsActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
+
+
+    class MyAdapter extends ArrayAdapter<String> {
+
+        Context context;
+        ArrayList<String> tweet;
+
+
+        MyAdapter(Context c, ArrayList<String> title) {
+            super(c, R.layout.row, R.id.name, title);
+            this.context = c;
+            this.tweet = title;
+
+
+        }
+
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            LayoutInflater layoutInflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View row = layoutInflater.inflate(R.layout.row, parent, false);
+
+            TextView myTitle = row.findViewById(R.id.name);
+
+
+            // now set our resources on views
+
+            myTitle.setText(tweet.get(position));
+
+
+            return row;
+        }
+    }
+
+
+
 }
